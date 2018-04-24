@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>adss</title>
+		<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+		<style>
+			#box div{
+			width:200px;
+			height:200px;
+			border:1px solid red;
+			display: none;
+			}
+			.active{background: red;}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		<input type="button"  value="1" class="active"/>
+		<input type="button"  value="2" />		
+		<input type="button"  value="3" />
+		<div style="display: block" >111111</div>
+		<div>222222</div>
+		<div>333333</div>
+		</div>
+		<!--<script type="text/javascript">
+			window.onload=function(){
+				var oBox=document.getElementById('box');
+			var oInput=oBox.getElementsByTagName('input');
+			var oDiv=oBox.getElementsByTagName('div');
+			for(var i=0;i<oInput.length;i++){
+				oInput[i].in=i;
+				oInput[i].onclick=function(){
+					for(var j=0;j<oInput.length;j++){
+						if(j!=this.in){
+							oInput[j].className='';
+							oDiv[j].style.display='none';
+						}
+					}
+					this.className='active';
+					oDiv[this.in].style.display='block';
+					
+				}
+			}
+			}
+		</script>-->
+		<script type="text/javascript">
+			$(function(){
+				$('#box').find('input').click(function(){
+					$('#box').find('input').attr('class','');
+					$('#box').find('div').css('display','none');
+					$(this).attr('class','active');
+					$('#box').find('div').eq($(this).index()).css('display','block');
+					
+				});
+			});
+		</script>
+	</body>
+</html>
